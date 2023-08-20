@@ -29,6 +29,21 @@ io.on("connection", (socket) => {
     cb();
   });
 
+  // for handline rtc connection START --
+  socket.on("share:desc", ({ roomName, desc, peerid }, cb) => {
+    console.log(roomName, desc, peerid);
+    socket.to(roomName).emit("add:desc", { desc, peerid });
+    cb();
+  });
+
+  socket.on("share:ice-cand", ({ roomName, icecandidate, peerid }, cb) => {
+    console.log(roomName, icecandidate, peerid);
+    socket.to(roomName).emit("add:ice-cand", { icecandidate, peerid });
+    cb();
+  });
+
+  // for handling rtc connection  END --
+
   socket.on("disconnect", () => {
     // remove socket from all the rooms it is inside
     console.log("Before : ", rooms);

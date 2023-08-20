@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { RoomContext } from "../contexts/RoomContext";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Root = () => {
   const [room, setRoom] = useState("");
@@ -10,6 +10,7 @@ const Root = () => {
     <>
       <RoomContext.Provider value={{ room: room, setRoom: setRoom }}>
         Root {room}
+        <Link to="join">Join Room</Link>
         <Outlet />
       </RoomContext.Provider>
     </>

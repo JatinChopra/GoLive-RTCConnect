@@ -9,21 +9,21 @@ const stunConfig = {
     {
       urls: "stun:stun.relay.metered.ca:80",
     },
-    {
-      urls: "turn:a.relay.metered.ca:80",
-      username: "50c0f437fa1d1fa37918241c",
-      credential: "bnCmSUkMlm15l8N2",
-    },
+    // {
+    //   urls: "turn:a.relay.metered.ca:80",
+    //   username: "50c0f437fa1d1fa37918241c",
+    //   credential: "bnCmSUkMlm15l8N2",
+    // },
     {
       urls: "turn:a.relay.metered.ca:80?transport=tcp",
       username: "50c0f437fa1d1fa37918241c",
       credential: "bnCmSUkMlm15l8N2",
     },
-    {
-      urls: "turn:a.relay.metered.ca:443",
-      username: "50c0f437fa1d1fa37918241c",
-      credential: "bnCmSUkMlm15l8N2",
-    },
+    // {
+    //   urls: "turn:a.relay.metered.ca:443",
+    //   username: "50c0f437fa1d1fa37918241c",
+    //   credential: "bnCmSUkMlm15l8N2",
+    // },
   ],
 };
 

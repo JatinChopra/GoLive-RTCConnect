@@ -8,6 +8,7 @@ const httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: "https://go-live-rtc-connect.vercel.app",
+    // origin: "http://localhost:5173",
   },
 });
 

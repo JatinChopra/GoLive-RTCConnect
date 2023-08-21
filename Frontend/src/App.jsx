@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
+import { ChakraProvider } from "@chakra-ui/react";
+
 // import routes
 import Root from "./routes/Root";
 import JoinRoomPage from "./routes/JoinRoomPage";
@@ -25,7 +27,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ChakraProvider>
+        <RouterProvider router={router} />
+      </ChakraProvider>
     </>
   );
 }

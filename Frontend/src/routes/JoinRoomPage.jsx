@@ -6,6 +6,8 @@ import { RoomContext } from "../contexts/RoomContext";
 
 import { socket } from "../socket";
 
+import { Input, Button } from "@chakra-ui/react";
+
 const JoinRoomPage = () => {
   const { room, setRoom } = useContext(RoomContext);
 
@@ -34,7 +36,9 @@ const JoinRoomPage = () => {
     <>
       <h3>Join Room page</h3>
       <label htmlFor="roomInput">Room Name : </label>
-      <input
+      <Input
+        width={"200px"}
+        size={"sm"}
         id="roomInput"
         type="text"
         value={room}
@@ -42,7 +46,9 @@ const JoinRoomPage = () => {
           setRoom(e.target.value);
         }}
       />
-      <button onClick={joinRoom}>Join</button>
+      <Button size="sm" ml="5" onClick={joinRoom}>
+        Join
+      </Button>
     </>
   );
 };

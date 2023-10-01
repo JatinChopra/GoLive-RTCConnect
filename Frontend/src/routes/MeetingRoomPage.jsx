@@ -101,8 +101,9 @@ const MeetingRoomPage = () => {
       console.log("stopping ...", track);
       track.stop();
     });
-    const ctx = localCanvas.current.getContext("2d");
-    ctx.clearRect(0, 0, localCanvas.current.width, localCanvas.current.height);
+
+    // const ctx = localCanvas.current.getContext("2d");
+    // ctx.clearRect(0, 0, localCanvas.current.width, localCanvas.current.height);
     // localCanvas.current
     //   .captureStream(60)
     //   .getTracks()
@@ -113,20 +114,20 @@ const MeetingRoomPage = () => {
   };
 
   const startStreaming = async () => {
-    const ctx = localCanvas.current.getContext("2d");
-    const canvasInterval = window.setInterval(() => {
-      ctx.drawImage(
-        localVideo.current,
-        0,
-        0,
-        localCanvas.current.width,
-        localCanvas.current.height
-      );
-      ctx.fillStyle = "rgba(200,0,0)";
-      ctx.strokeRect(25, 25, 100, 100);
-    }, 1000 / 60);
+    // const ctx = localCanvas.current.getContext("2d");
+    // const canvasInterval = window.setInterval(() => {
+    //   ctx.drawImage(
+    //     localVideo.current,
+    //     0,
+    //     0,
+    //     localCanvas.current.width,
+    //     localCanvas.current.height
+    //   );
+    //   ctx.fillStyle = "rgba(200,0,0)";
+    //   ctx.strokeRect(25, 25, 100, 100);
+    // }, 1000 / 60);
 
-    canvasInterval;
+    // canvasInterval;
 
     console.log("Start Streaming clicked ");
 
@@ -140,12 +141,16 @@ const MeetingRoomPage = () => {
 
     console.log("Got user permission : ", stream.getTracks());
 
-    localCanvas.current
-      .captureStream(60)
-      .getTracks()
-      .forEach((track) => {
-        pc1.addTrack(track, stream);
-      });
+    stream.getTracks().forEach((track) => {
+      pc1.addTrack(track, stream);
+    });
+
+    // localCanvas.current
+    //   .captureStream(60)
+    //   .getTracks()
+    //   .forEach((track) => {
+    //     pc1.addTrack(track, stream);
+    //   });
     console.log("Done with setting tracks of pc1");
 
     // geenrate offer
@@ -168,7 +173,7 @@ const MeetingRoomPage = () => {
 
   useEffect(() => {
     if (!room) {
-      navigate("/join");
+      navigate("/");
     }
 
     const onMessage = (msg) => {
@@ -184,7 +189,7 @@ const MeetingRoomPage = () => {
       if (participants.length == 2) {
         setRoomfull(true);
       }
-      alert(roomfull);
+      alert("New user joined the room.");
     };
 
     socket.on("send:msg", onMessage);
@@ -311,10 +316,11 @@ const MeetingRoomPage = () => {
             }}
             borderRadius={"10px"}
           >
-            <canvas
+            <video
+              autoPlay
               style={{ height: "100%", width: "100%", borderRadius: "10px" }}
-              ref={localCanvas}
-            ></canvas>
+              ref={localVideo}
+            ></video>
           </Box>
         </Flex>
       </Box>
